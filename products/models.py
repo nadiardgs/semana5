@@ -8,6 +8,10 @@ class Category(models.Model):
     def __str__(self):
         return '{} - {}'.format(self.name, self.products.count())
         #{self.name} - {self.products.count()}'
+    
+    #this class indicates to Django admin how to create the plural of the base class name
+    class Meta:
+        verbose_name_plural = 'Categories'
 
 class Product(models.Model):
     name = models.CharField('Nome', max_length=100)

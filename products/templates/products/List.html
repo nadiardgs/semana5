@@ -7,7 +7,7 @@
             <h2>Listagem de Produtos</h2>
         </div>
         <div class="col-md-3">
-            <a class="btn btn-primary btn-block" href="/products/create">Adicionar produto</a>
+            <a class="btn btn-primary btn-block" href="/products/create">Atualizar produto</a>
         </div>
         <table class="table table-striped table-bordered">
             <thead>
@@ -15,18 +15,27 @@
                     <th>Nome</th>
                     <th>Preço</th>
                     <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 {% for product in products %}
                     <tr>
-                        <td> {{ product.name }} </td>
+                        <td> {{ product.name|capfirst }} </td>
                         <td> R$ {{ product.price }} </td>
                         <td> {{ product.description }} </td>
+                        <td> {{ product.category.name }} </td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a href="/products/update/{{ product.pk }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                <a href="/products/delete/{{ product.pk }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </td>
                     </tr>
                     {% empty %}
                         <tr>
-                            <td colspan=3 class="text-center">
+                            <td colspan=5 class="text-center">
                                 Nenhum produto encontrado.
                             </td>
                         </tr>

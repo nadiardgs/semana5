@@ -18,6 +18,8 @@ from products import views
 
 urlpatterns = [
     path('list', views.list_products, name='products/list'),
-    path('create', views.create_product, name='products/create')
+    path('create', views.create_product, name='products/create'),
+    path('delete/<int:product_id>', views.delete_product, name='products/delete'),
+    path('update/<int:product_id>', views.update_product, name='products/update')
     #name deve representar o caminho da pagina apos a barra?
 ]

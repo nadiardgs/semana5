@@ -20,7 +20,8 @@ from products import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/',
-         include(('products.urls', 'products'), namespace='products'))
+         include(('products.urls', 'products'), namespace='products')),
+    path('api/', include(('product_api.urls', 'product_api'), namespace='product_api'))
 ]
     # a tag name deve ser igual ao a class do base.html, nesse caso
     #url(r'^ltw/',include('django_adminlte.urls',namespace="django_adminlte"))
